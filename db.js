@@ -1,19 +1,22 @@
+require('dotenv').config();
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: '127.0.0.1',   // Replace with your container's IP address
-  user: 'root',
-  password: 'secret',
-  database: 'node_db',
-  port: 5506   // The MySQL port
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT
 });
 
 connection.connect((err) => {
   if (err) {
     console.error('Error connecting to the database:', err);
     return;
+  }else {
+    console.log('Connected to the database!');
   }
-  console.log('Connected to the database!');
+  
 });
 
 module.exports = connection;
