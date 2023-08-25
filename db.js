@@ -1,11 +1,11 @@
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-  host: '192.168.80.3',   // Replace with your container's IP address
+  host: '127.0.0.1',   // Replace with your container's IP address
   user: 'root',
   password: 'secret',
   database: 'node_db',
-  port: 8077   // The MySQL port
+  port: 5506   // The MySQL port
 });
 
 connection.connect((err) => {
